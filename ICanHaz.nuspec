@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>ICanHaz</id>
+    <version>0.10.0</version>
+    <authors>ICanHaz</authors>
+    <owners>Indaco Systems</owners>
+    <description>templating js, modified by Indaco Systems</description>
+    <projectUrl>http://icanhazjs.com/</projectUrl>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <tags>upload</tags>
+    <language>en-US</language>
+  </metadata>
+  <files>
+  <file src="ICanHaz.js" target="Content\Scripts\Lib\Vendor\ICanHaz\iCanHaz.js" />
+  <file src="singleton-ich.js" target="Content\Scripts\Lib\Vendor\ICanHaz\singleton-ich.js" />
+  </files>
+</package>
