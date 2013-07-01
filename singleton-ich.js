@@ -1,4 +1,4 @@
-﻿define('indaco-ich', [
+﻿define('singleton-ich', [
         'ich'
 ], function () {
 
