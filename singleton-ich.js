@@ -1,16 +1,33 @@
 ﻿define('singleton-ich', [
-        'ich'
-], function () {
+        'i18n!nls/indaco-resx',
+        'ich',
+        'text!commonTemplates.html'
+], function (Resources, i, common) {
 
     var IchSingleton = (function () {
         var instance;
+
+        var buildCommon = function (html) {
+            
+            var $wrapper = $('<div></div>').append(common),
+                scripts = $wrapper.find('script[type="text/html"], script[type="text/html"]');
+
+            scripts.each(function(idx,script) {
+                ich.addTemplate(script.id, script.innerHTML.trim());
+            });
+            
+        };
 
         return {
             getInstance: function (opt) {
                 if (!instance) {
                     instance = ich;
+
+                    buildCommon();
+                    
+                    instance.setResources(Resources);
                     instance.grabTemplates();
-                } 
+                }
                 return instance;
             }
         };
@@ -20,4 +37,3 @@
     return IchSingleton;
 
 });
-    
