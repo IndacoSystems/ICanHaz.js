@@ -10,7 +10,8 @@
         var buildCommon = function (html) {
             
             var $wrapper = $('<div></div>').append(common),
-				scripts = $wrapper.find('script[type="text/html"], script[type="text/x-icanhaz"]');
+				scripts = $wrapper.find('script[type="text/html"], script[type="text/x-icanhaz"], script[type="text/mustache"]');
+
 
             scripts.each(function(idx,script) {
                 ich.addTemplate(script.id, script.innerHTML.trim());
