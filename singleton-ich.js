@@ -7,29 +7,35 @@
     var IchSingleton = (function () {
         var instance;
 
-        var buildCommon = function (html) {
+        var loadTemplate = function (inst, html) {
             
-            var $wrapper = $('<div></div>').append(common),
-				scripts = $wrapper.find('script[type="text/html"], script[type="text/x-icanhaz"], script[type="text/mustache"]');
+            var $wrapper = $('<div></div>').append(html),
+                scripts = $wrapper.find('script[type="text/html"], script[type="text/x-icanhaz"], script[type="text/mustache"]');
 
-
-            scripts.each(function(idx,script) {
-                ich.addTemplate(script.id, script.innerHTML.trim());
+            scripts.each(function (idx, script) {
+                inst.addTemplate(script.id, script.innerHTML.trim());
             });
             
         };
 
-        return {
-            getInstance: function (opt) {
-                if (!instance) {
-                    instance = ich;
+        var getInstance = function (opt){
+            if (!instance) {
+                instance = ich;
 
-                    buildCommon();
-                    
-                    instance.setResources(Resources);
-                    instance.grabTemplates();
-                }
-                return instance;
+                loadTemplate(instance, common);
+
+                instance.setResources(Resources);
+                instance.grabTemplates();
+            }
+            return instance;
+        };
+
+        return {
+            getInstance: function (opts){
+                return getInstance(opts);
+            },
+            loadTemplate: function (html) {
+                loadTemplate(getInstance(), html);
             }
         };
 
